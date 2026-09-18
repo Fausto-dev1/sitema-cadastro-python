@@ -26,6 +26,9 @@ def cadastrar():
                 else:
                     for pessoa in linhas:
                         print(pessoa.strip())
+            print("-" * 30)
+            print(f"Total de usuários cadastrados: {len(linhas)}".center(30))
+            print("-" * 30)
         elif numero == 2:
             while True:       #fazer cadastro de pessoa
                 cadastrar_p = (input("Informe nome para cadastro: "))
