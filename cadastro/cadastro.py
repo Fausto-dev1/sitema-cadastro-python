@@ -26,9 +26,25 @@ def cadastrar():
                 else:
                     for pessoa in linhas:
                         print(pessoa.strip())
-        elif numero == 2:       #fazer cadastro de pessoa
-            cadastrar_p = str(input("Informe nome para cadastro: "))
-            cadastro_id = int(input("Informe a idade: "))
+        elif numero == 2:
+            while True:       #fazer cadastro de pessoa
+                cadastrar_p = (input("Informe nome para cadastro: "))
+                if cadastrar_p == "":
+                    print("\033[31mINSIRA UM NOME PARA CADASTRO\033[0m")
+                    continue
+                else:
+                    print("O nome foi inserido corretamente! ")
+                    break
+            while True:
+                    try:
+                        cadastro_id = int(input("Informe a idade: "))
+                        if cadastro_id > 0 and cadastro_id <= 120:
+                            print("Idade inserida corretamente! ")
+                            break
+                        else:
+                            print("\033[31mINSIRA UMA IDADE VÁLIDA\033[0m")
+                    except:
+                        print("\033[31mVOCE NÃO INSERIU UM NÚMERO\033[0m")
             with open("arquivo/pessoas.txt", "a") as arquivo:
                 arquivo.write(f"{cadastrar_p} - {cadastro_id} anos\n") 
                 print(f"O Usuario {cadastrar_p} foi cadastrado!")
