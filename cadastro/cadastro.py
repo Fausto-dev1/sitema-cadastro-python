@@ -20,8 +20,12 @@ def cadastrar():
             print("NOMES CADASTRADOS".center(30))
             print("-" * 30)
             with open("arquivo/pessoas.txt", "r") as arquivo:
-                for linhas in arquivo:
-                    print(linhas.strip())
+                linhas = arquivo.readlines()
+                if not linhas:
+                    print("Nenhum usuário foi cadastrado!")
+                else:
+                    for pessoa in linhas:
+                        print(pessoa.strip())
         elif numero == 2:       #fazer cadastro de pessoa
             cadastrar_p = str(input("Informe nome para cadastro: "))
             cadastro_id = int(input("Informe a idade: "))
