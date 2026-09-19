@@ -5,6 +5,7 @@ def linha():
     print("1 - Ver pessoas cadastradas")
     print("2 - Cadastrar pessoa")
     print("3 - Sair do sistema")
+    print("4 - Pesquisar por pessoa")
     print("-" * 30)
 
 def cadastrar():
@@ -56,5 +57,24 @@ def cadastrar():
             print("Saindo do sistema!")
             print("-" * 30)
             break
+        elif numero == 4:            #pesquisa de usuário
+            print("-" * 30)
+            print("PESQUISA DE USUÁRIO".center(30))
+            print("-" * 30)
+            with open("arquivo/pessoas.txt", "r") as arquivo:
+                pessoa_cad = arquivo.readlines()
+            while True:
+                pesquisa_p = input("Informe o nome para pesquisa: ")
+                achou = False
+                for p in pessoa_cad:
+                    if pesquisa_p in p:
+                        achou = True
+                        print("-" * 30)
+                        print("Usuário encontrado!")
+                        print("-" * 30)
+                        print(p.strip())
+                if achou:
+                    break
+                print("Usuário nao encontrado!")
         else:
             print("Voce digitou uma opção errada") 
